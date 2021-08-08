@@ -17,6 +17,8 @@ def main():
     run=True
     clock = pygame.time.Clock()
     game = Game(win)
+    selected_piece = []
+    turn = "white"
     while run:
         clock.tick(FPS)
         for event in pygame.event.get():
@@ -26,7 +28,14 @@ def main():
                 pos = pygame.mouse.get_pos()
                 row,col = get_row_col_from_mouse(pos)
                 print(row,col)
-                game.draw_square()
+                piece  = game.there_is_a_piece(row,col)
+                if piece is not None and piece.color==turn:
+                    if len(selected_piece):
+                        selected_piece.pop()
+                    selected_piece.append(piece)
+                ## move the selected peice 
+                elif len(selected_piece)==1:
+                     game.move_piece(row,col,selected_piece.pop())
         game.update()
     
 
