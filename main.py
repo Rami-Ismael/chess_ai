@@ -28,7 +28,7 @@ def main():
                 pos = pygame.mouse.get_pos()
                 row,col = get_row_col_from_mouse(pos)
                 print(row,col)
-                piece  = game.there_is_a_piece(row,col)
+                piece  = game.return_a_piece_at_the_location(row,col)
                 if piece is not None and piece.color==turn:
                     if len(selected_piece):
                         selected_piece.pop()

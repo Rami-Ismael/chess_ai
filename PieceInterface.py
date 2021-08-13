@@ -1,12 +1,13 @@
 import abc
 from constant import SQUARE_SIZE
 class pieceInterface(metaclass=abc.ABCMeta):
-    def __init__(self,color,row_position,col_position):
+    def __init__(self,color,row_position,col_position,piece):
         self.color = color
         self.row_position = row_position
         self.col_position= col_position
         self.x = 0
         self.y = 0
+        self.piece = piece
         if color=="white":
             self.integer_value = 1
         else:
