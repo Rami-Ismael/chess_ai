@@ -28,13 +28,13 @@ class Game():
         ## if pond just started
         if selected_piece.piece == "pond":
             if selected_piece.row_position == 1 or selected_piece.row_position == 6:
-                if selected_piece.color=="white" and valid_move(selected_piece,2,0):
+                if selected_piece.color=="white" and self.valid_move(selected_piece,2,0):
                     list_of_valid_moves.append(Move(selected_piece,selected_piece.row_position+2,selected_piece.col_postion,False,None))
-                elif selected_piece.color=="black" and valid_move(selected_piece,-2,0):
+                elif selected_piece.color=="black" and self.valid_move(selected_piece,-2,0):
                     list_of_valid_moves.append(Move(selected_piece,selected_piece.row_position-2,selected_piece.col_postion,False,None))
-            elif selected_piece.piece == "white" and valid_move(selected_piece,1,0):
+            elif selected_piece.piece == "white" and self.valid_move(selected_piece,1,0):
                     list_of_valid_moves.append(Move(selected_piece,selected_piece.row_position+1,selected_piece.col_postion,False,None))
-            elif selected_piece.peice == "black" and valid_move(selected_piece,-1,0):
+            elif selected_piece.peice == "black" and self.valid_move(selected_piece,-1,0):
                     list_of_valid_moves.append(Move(selected_piece,selected_piece.row_position-2,selected_piece.col_postion,False,None))
         return list_of_valid_moves
     def valid_move(self,piece,row,col):
@@ -47,9 +47,10 @@ class Game():
         for x in the_list:
             if x.new_row == row:
                 if x.new_col ==col:
-        
-            
-               
+                    if x.current_piece.color == piece.color:
+                        if x.current_piece.piece == piece.piece:
+                            return True
+        return False
     def move_piece(self,row,col,piece):
         self.board.board[piece.row_position][piece.col_position] =0
         self.board.board[row][col] = Pond("white",row,col)

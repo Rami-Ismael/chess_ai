@@ -34,7 +34,7 @@ def main():
                         selected_piece.pop()
                     selected_piece.append(piece)
                 ## move the selected peice 
-                elif len(selected_piece)==1:
+                elif len(selected_piece)==1 and game.is_selected_move_valid(row,col,selected_piece[0]):
                      game.move_piece(row,col,selected_piece.pop())
         game.update()
     
