@@ -34,9 +34,9 @@ class Game():
                     list_of_valid_moves.append(Move(selected_piece,selected_piece.row_position+2,selected_piece.col_position,False,None))
                 elif selected_piece.color=="black" and self.valid_move(selected_piece,-2,0):
                     list_of_valid_moves.append(Move(selected_piece,selected_piece.row_position-2,selected_piece.col_position,False,None))
-            elif selected_piece.piece == "white" and self.valid_move(selected_piece,1,0):
+            if selected_piece.color=="white" and  self.valid_move(selected_piece,1,0):
                     list_of_valid_moves.append(Move(selected_piece,selected_piece.row_position+1,selected_piece.col_position,False,None))
-            elif selected_piece.peice == "black" and self.valid_move(selected_piece,-1,0):
+            elif selected_piece.color == "black" and self.valid_move(selected_piece,-1,0):
                     list_of_valid_moves.append(Move(selected_piece,selected_piece.row_position-2,selected_piece.col_position,False,None))
         return list_of_valid_moves
     def valid_move(self,piece,row,col):
