@@ -27,23 +27,26 @@ class Game():
         list_of_valid_moves = []
         ## if pond just started
         if selected_piece.piece == "pond":
+            print("asdf")
             if selected_piece.row_position == 1 or selected_piece.row_position == 6:
                 if selected_piece.color=="white" and self.valid_move(selected_piece,2,0):
-                    list_of_valid_moves.append(Move(selected_piece,selected_piece.row_position+2,selected_piece.col_postion,False,None))
+                    print("action")
+                    list_of_valid_moves.append(Move(selected_piece,selected_piece.row_position+2,selected_piece.col_position,False,None))
                 elif selected_piece.color=="black" and self.valid_move(selected_piece,-2,0):
-                    list_of_valid_moves.append(Move(selected_piece,selected_piece.row_position-2,selected_piece.col_postion,False,None))
+                    list_of_valid_moves.append(Move(selected_piece,selected_piece.row_position-2,selected_piece.col_position,False,None))
             elif selected_piece.piece == "white" and self.valid_move(selected_piece,1,0):
-                    list_of_valid_moves.append(Move(selected_piece,selected_piece.row_position+1,selected_piece.col_postion,False,None))
+                    list_of_valid_moves.append(Move(selected_piece,selected_piece.row_position+1,selected_piece.col_position,False,None))
             elif selected_piece.peice == "black" and self.valid_move(selected_piece,-1,0):
-                    list_of_valid_moves.append(Move(selected_piece,selected_piece.row_position-2,selected_piece.col_postion,False,None))
+                    list_of_valid_moves.append(Move(selected_piece,selected_piece.row_position-2,selected_piece.col_position,False,None))
         return list_of_valid_moves
     def valid_move(self,piece,row,col):
         ## logic for a pong
-        if piece.piece == "pond" and piece.row_position+row>=0 and piece.row_position +row <=7 and piece.col_position+col>=0 and piece.col_position+col<=7 and self.is_there_a_piece(row+piece.row_position,col+piece.col_position):
+        if piece.piece == "pond" and piece.row_position+row>=0 and piece.row_position +row <=7 and piece.col_position+col>=0 and piece.col_position+col<=7 and not self.is_there_a_piece(row+piece.row_position,col+piece.col_position):
             return True
         return False
     def is_selected_move_valid(self,row,col,piece):
         the_list = self.moves(piece)
+        print(the_list)
         for x in the_list:
             if x.new_row == row:
                 if x.new_col ==col:
