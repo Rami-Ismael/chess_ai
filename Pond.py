@@ -1,5 +1,5 @@
 from PieceInterface import pieceInterface
-from constant import WHITE_PAWN
+from constant import WHITE_PAWN,BLACK_PAWN
 class Pond(pieceInterface):
     def __init__(self,color,row_position,col_position):
         super().__init__(color,row_position,col_position,"pond")
@@ -8,3 +8,5 @@ class Pond(pieceInterface):
     def draw(self,win):
         if self.color =="white":
             win.blit(WHITE_PAWN,(self.x,self.y))
+        else:
+            win.blit(BLACK_PAWN,(self.x,self.y))

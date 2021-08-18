@@ -23,6 +23,9 @@ class Board:
             for col in range(COLS):
                 if row ==1:
                     self.board[row].append(Pond(WHITE_SECTION,row,col))
+                #add black piece
+                elif row ==6:
+                    self.board[row].append(Pond(BLACK_SECTION,row,col))
                 else:
                     self.board[row].append(0)
     def draw(self,win):
