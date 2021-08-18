@@ -27,7 +27,6 @@ class Game():
         list_of_valid_moves = []
         ## if pond just started
         if selected_piece.piece == "pond":
-            print("asdf")
             if selected_piece.row_position == 1 or selected_piece.row_position == 6:
                 if selected_piece.color=="white" and self.valid_move(selected_piece,2,0):
                     print("action")
@@ -37,7 +36,7 @@ class Game():
             if selected_piece.color=="white" and  self.valid_move(selected_piece,1,0):
                     list_of_valid_moves.append(Move(selected_piece,selected_piece.row_position+1,selected_piece.col_position,False,None))
             elif selected_piece.color == "black" and self.valid_move(selected_piece,-1,0):
-                    list_of_valid_moves.append(Move(selected_piece,selected_piece.row_position-2,selected_piece.col_position,False,None))
+                    list_of_valid_moves.append(Move(selected_piece,selected_piece.row_position-1,selected_piece.col_position,False,None))
         return list_of_valid_moves
     def valid_move(self,piece,row,col):
         ## logic for a pong
@@ -56,5 +55,9 @@ class Game():
         return False
     def move_piece(self,row,col,piece):
         self.board.board[piece.row_position][piece.col_position] =0
-        self.board.board[row][col] = Pond("white",row,col)
+        self.board.board[row][col] = self.add_new_piec(row,col,piece)
+    def add_new_piec(self,row,col,piece):
+        if(piece.piece=="pond"):
+            return Pond(piece.color,row,col)
+        return None
          
