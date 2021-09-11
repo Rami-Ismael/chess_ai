@@ -1,6 +1,7 @@
-from dataclass import Dataclass
+from dataclasses import dataclass
 from PieceInterface import pieceInterface
-class Move():
+@dataclass
+class Move:
     current_piece: pieceInterface
     new_row: int
     new_col: int
