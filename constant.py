@@ -12,6 +12,7 @@ BLUE = (0,0,255)
 GRAY = (128,128,128)
 LIGHT_BROWN = (224,139,62)
 BRIGHT_WHITE = (251,241,231)
+print("rami")
 
 ## chess
 BLACK_PAWN_PATH = "./chess/assets/black_pawn.png"
